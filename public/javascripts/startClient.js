@@ -21,7 +21,7 @@ $(document).ready(function () {
     socket.on('namesList', function(result) {
         $('#documentsList').empty();
        for(var i = 0; i < result.names.length; i++) {
-           $('#documentsList').append('<li><a href="/edit/' + result.names[i].id + '">' + result.names[i].name + '</a></li>')
+           $('#documentsList').append('<li><a href="/edit.html?id=' + result.names[i].id + '">' + result.names[i].name + '</a></li>')
        }
     });
 
