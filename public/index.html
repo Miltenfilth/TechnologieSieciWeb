@@ -2,19 +2,23 @@
 <html>
 <head>
     <title>Technologie Sieci Web</title>
-    <link rel='stylesheet' href='stylesheets/style.css' />
+    <link rel='stylesheet' href='stylesheets/style.css'/>
 </head>
 <body>
-       <div id='documentName'></div>
-       <div id='documentId'></div>
-       <div id="textDiv">
-           <table id="textTable">
+<div id='startPage'>
 
-           </table>
-       </div>
+    <input id="newDocumentName" type="text" value="new document name">
+    <button id="newButton">Create new document</button>
+    <br/>
+    Existing documents list:
+    <ul id="documentsList">
+      <!-- list of documents is dynamic inserted here -->
+    </ul>
+
+</div>
 <script src='/socket.io/socket.io.js' type='text/javascript'></script>
 <script src='http://code.jquery.com/jquery-1.8.0.min.js' type='text/javascript'></script>
-<script src='javascripts/client.js' type='text/javascript'></script>
+<script src='javascripts/startClient.js' type='text/javascript'></script>
 
 </body>
 </html>

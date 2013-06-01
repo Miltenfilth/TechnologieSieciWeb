@@ -16,11 +16,27 @@ App.prototype.createNewDocument = function (name) {
     });
 };
 
+App.prototype.getDocumentsNames = function (name) {
+    this.socket.emit('getDocumentsNames');
+};
+
+
+
 $(document).ready(function () {
     var app = new App(socket);
 
-    app.createNewDocument('moj pierwszy dokument');
+    var currentDocumentId;
+    var workMode = "start";
 
+
+
+    app.createNewDocument('moj pierwszy dokument');
+    app.createNewDocument('moj 2 dokument');
+    //app.getDocumentsNames();
+
+    if(workMode === "start") {
+        app.getDocumentsNames();
+    }
 
     socket.on('documentCreated', function (result) {
         var document = result.document;
@@ -36,6 +52,12 @@ $(document).ready(function () {
                 $('#textTable').append('<tr><td><input type="text" name="input' + i + '" value="' + document.lines[i].text + '"></td></tr>');
             }
         }
+    });
+
+    socket.on('namesList', function(result) {
+       for(var i = 0; i < result.names.length; i++) {
+           $('#documentsList').append('<li id="' + result.names[i].id + '">' + result.names[i].name + '</li>')
+       }
     });
     /*
      socket.on('nameResult', function(result) {

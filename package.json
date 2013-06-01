@@ -6,10 +6,10 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "3.2.2",
-    "ejs": "*",
+    "express": "3.2.5",
+    "ejs": "0.8.4",
     "less-middleware": "*",
-    "socket.io": "*",
+    "socket.io": "0.9.*",
     "redis": "*",
     "mongoose": "*"
   }
