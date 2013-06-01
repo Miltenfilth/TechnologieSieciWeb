@@ -1,2 +1,3 @@
 TechnologieSieciWeb
 ===================
+Author: Maciej Stankiewicz
