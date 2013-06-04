@@ -1,4 +1,4 @@
-var socket = io.connect();
+var socket2 = io.connect();
 
 var App = function (socket) {
     this.socket = socket;
@@ -15,10 +15,17 @@ App.prototype.getDocument = function(id) {
 };
 
 $(document).ready(function () {
-    var app = new App(socket);
+    var app = new App(socket2);
+
+    var editor = ace.edit("editor");
+
+    var currentDocumentName = $(location).attr('href').split("?")[1];
+
+    sharejs.open(currentDocumentName, 'text', 'http://localhost:8000/channel', function (error, doc) {
+        doc.attach_ace(editor);
+    });
 
 
-    var currentDocumentId = $(location).attr('href').split("=")[1];
     var workMode = "edit";
 
     app.getDocumentsNames();
