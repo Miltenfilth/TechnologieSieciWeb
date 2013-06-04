@@ -21,7 +21,7 @@ $(document).ready(function () {
         var documentListSelector = $('#documentsList');
         documentListSelector.empty();
         for (var i = 0; i < result.names.length; i++) {
-            documentListSelector.append('<li><a href="/edit.html?id=' + result.names[i].id + '">' + result.names[i].name + '</a></li>')
+            documentListSelector.append('<li><a href="/edit.html?id=' + result.names[i] + '">' + result.names[i] + '</a></li>')
         }
     });
 
