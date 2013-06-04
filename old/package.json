@@ -6,7 +6,11 @@
     "start": "node app.js"
   },
   "dependencies": {
-      "share": "0.6.3",
-      "connect" : "*"
+    "express": "3.2.5",
+    "ejs": "0.8.4",
+    "less-middleware": "*",
+    "socket.io": "0.9.*",
+    "redis": "*",
+    "mongoose": "*"
   }
 }

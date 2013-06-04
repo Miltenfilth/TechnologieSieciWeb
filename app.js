@@ -1,27 +1,15 @@
-/*jshint node: true */
-var express = require('express');
-var http = require('http');
-var path = require('path');
-var less = require('less-middleware');
+var connect = require('./node_modules/connect'),
+    sharejs = require('./node_modules/share').server;
 
+var server = connect(
+    connect.logger(),
+    connect.static(__dirname + '/public')
+);
+var options = {db:{type:'none'}}; // See docs for options. {type: 'redis'} to enable persistance.
 
-var app = express();
+// Attach the sharejs REST and Socket.io interfaces to the server
+sharejs.attach(server, options);
 
-app.configure(function () {
-    app.set('port', process.env.PORT || 3000);
-    app.use(express.favicon());
-    app.use(express.logger('dev'));
-    app.use(less({
-        src: __dirname + '/public',
-        compress: true
-    }));
-    app.use(express.static(path.join(__dirname, 'public')));
+server.listen(8000, function () {
+    console.log('Server running at http://127.0.0.1:8000/');
 });
-
-var server = http.createServer(app).listen(app.get('port'), function () {
-    console.log("Serwer nasłuchuje na porcie " + app.get('port'));
-});
-
-var chatServer = require('./lib/main');
-chatServer.listen(server);
-
