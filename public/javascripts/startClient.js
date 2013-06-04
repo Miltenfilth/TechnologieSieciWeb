@@ -25,6 +25,12 @@ $(document).ready(function () {
         }
     });
 
+    socket.on('documentAlreadyExist', function (result) {
+        if (confirm('Document named: "' + result.name + '" already exist, do you want open it?')) {
+            window.location.href = "/edit.html?id=" + result.name;
+        }
+    });
+
     $('#newButton').on('click', function () {
         var newDocumentName = $('#newDocumentName').val();
         app.createNewDocument(newDocumentName);
