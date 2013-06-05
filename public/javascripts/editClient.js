@@ -30,7 +30,7 @@ $(document).ready(function () {
         }
     });
 
-
+    $('#titleText').text(currentDocumentName.split("%20").join(' '));
 
     app.getDocumentsNames();
 
@@ -59,12 +59,13 @@ $(document).ready(function () {
         }
     });  */
     //TODO dziala ale trzeba dodac delete i backspace
+    /*
     editor.container.addEventListener("keydown", function (event) {
         var cursor = editor.selection.getCursor();
         if(cursor.row === 3)
             event.preventDefault();
     }, true);
-
+     */
 
 
     $('#block').on('click', function () {
@@ -79,14 +80,19 @@ $(document).ready(function () {
     });
 
     $('#save').on('click', function () {
-        //var text = editor.getValue();
         var lines = editor.getSession().getDocument().getAllLines();
-        var txt = '';
+        var text = '';
         for(var x=0;x<lines.length;x++){
-            if(txt!=''){txt+='\r\n';}
-            txt+=lines[x];
+            text += lines[x] + '\r\n';
         }
-        var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
+        var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
         saveAs(blob, currentDocumentName + ".txt");
+    });
+
+
+    //TODO spowolnic i ustawic
+    $('#play').on('click', function () {
+        var text = docGlobal.getText();
+        speak(text);
     });
 });

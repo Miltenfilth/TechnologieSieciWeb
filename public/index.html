@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Technologie Sieci Web</title>
+
     <link rel='stylesheet' href='stylesheets/style.css'/>
 
     <script src='/socket.io/socket.io.js' type='text/javascript'></script>
-    <script src='http://code.jquery.com/jquery-1.8.0.min.js' type='text/javascript'></script>
+
+    <script src='javascripts/external_libs/jquery-1.10.0.min.js' type='text/javascript'></script>
 
     <script src='javascripts/startClient.js' type='text/javascript'></script>
 </head>
 <body>
 <div id='startPage'>
-
     <input id="newDocumentName" type="text" value="new document name">
     <button id="newButton">Create new document</button>
     <br/>
     Existing documents list:
     <ul id="documentsList">
-      <!-- list of documents is dynamic inserted here -->
+        <!-- list of documents is dynamic inserted here -->
     </ul>
-
+    <input id="newUserName" type="text" value="new user name">
+    <button id="newUserButton">Create new user</button>
+    <br/>
+    Users list:
+    <ul id="usersList">
+        <!-- list of users is dynamic inserted here -->
+    </ul>
 </div>
-
-
 </body>
 </html>
 
