@@ -36,14 +36,14 @@ $(document).ready(function () {
         }
     });
 
-    socket.on('usersList', function (result) {
+ /*   socket.on('usersList', function (result) {
         var documentListSelector = $('#usersList');
         documentListSelector.empty();
         documentListSelector.append('<li>We have currently: ' + result.users.length + ' users!</li>');
         for (var i = 0; i < result.users.length; i++) {
             documentListSelector.append('<li>' + result.users[i] + '</li>');
         }
-    });
+    });*/
 
     socket.on('documentAlreadyExist', function (result) {
         if (confirm('Document named: "' + result.name + '" already exist, do you want open it?')) {
